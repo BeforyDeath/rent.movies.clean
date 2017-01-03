@@ -21,13 +21,11 @@ func (h CustomerHandler) Create(w http.ResponseWriter, r *http.Request) {
 		response.Error = err.Error()
 		return
 	}
-
 	err = h.Service.Create(params)
 	if err != nil {
 		response.Error = err.Error()
 		return
 	}
-
 	response.Success = true
 }
 
@@ -40,19 +38,16 @@ func (h CustomerHandler) Login(w http.ResponseWriter, r *http.Request) {
 		response.Error = err.Error()
 		return
 	}
-
 	result, err := h.Service.Login(params)
 	if err != nil {
 		response.Error = err.Error()
 		return
 	}
-
 	response.Success = true
 	response.Data = result
 }
 
-// fixme response
-func (h CustomerHandler) Authorization(next http.Handler) http.Handler {
+func (h CustomerHandler) Authorization(next http.Handler) http.Handler { // fixme response
 	fn := func(w http.ResponseWriter, r *http.Request) {
 		token := r.Header.Get("X-Auth-Token")
 		if token != "" {
@@ -60,10 +55,10 @@ func (h CustomerHandler) Authorization(next http.Handler) http.Handler {
 			if err != nil {
 
 				w.Header().Set("Content-Type", "application/json; charset=utf-8")
-				response := response{}
-				response.Error = err.Error()
+				re := response{}
+				re.Error = err.Error()
 				w.WriteHeader(http.StatusForbidden)
-				json.NewEncoder(w).Encode(response)
+				json.NewEncoder(w).Encode(re)
 				return
 
 			}
@@ -74,10 +69,10 @@ func (h CustomerHandler) Authorization(next http.Handler) http.Handler {
 		}
 
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
-		response := response{}
-		response.Error = "One of the parameters specified was missing or invalid: address is token"
+		re := response{}
+		re.Error = "One of the parameters specified was missing or invalid: address is token"
 		w.WriteHeader(http.StatusForbidden)
-		json.NewEncoder(w).Encode(response)
+		json.NewEncoder(w).Encode(re)
 
 		return
 	}

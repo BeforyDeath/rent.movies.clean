@@ -1,6 +1,6 @@
 package service
 
-import jwt "github.com/dgrijalva/jwt-go"
+import jwt "github.com/dgrijalva/jwt-go" // fixme do adapter
 
 type CustomerService interface {
 	Create(p map[string]interface{}) error

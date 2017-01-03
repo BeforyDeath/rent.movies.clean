@@ -12,12 +12,12 @@ type RentHandler struct {
 }
 
 func (h RentHandler) Take(w http.ResponseWriter, r *http.Request) {
-	response := newResponse(w)
-	defer response.Send()
+	rw := newResponse(w)
+	defer rw.Send()
 
 	params, err := jsonRequest(r)
 	if err != nil {
-		response.Error = err.Error()
+		rw.Error = err.Error()
 		return
 	}
 
@@ -26,19 +26,19 @@ func (h RentHandler) Take(w http.ResponseWriter, r *http.Request) {
 
 	err = h.Service.Take(userID, params)
 	if err != nil {
-		response.Error = err.Error()
+		rw.Error = err.Error()
 		return
 	}
-	response.Success = true
+	rw.Success = true
 }
 
 func (h RentHandler) Complete(w http.ResponseWriter, r *http.Request) {
-	response := newResponse(w)
-	defer response.Send()
+	rw := newResponse(w)
+	defer rw.Send()
 
 	params, err := jsonRequest(r)
 	if err != nil {
-		response.Error = err.Error()
+		rw.Error = err.Error()
 		return
 	}
 
@@ -47,19 +47,19 @@ func (h RentHandler) Complete(w http.ResponseWriter, r *http.Request) {
 
 	err = h.Service.Complete(userID, params)
 	if err != nil {
-		response.Error = err.Error()
+		rw.Error = err.Error()
 		return
 	}
-	response.Success = true
+	rw.Success = true
 }
 
 func (h RentHandler) GetAll(w http.ResponseWriter, r *http.Request) {
-	response := newResponse(w)
-	defer response.Send()
+	rw := newResponse(w)
+	defer rw.Send()
 
 	params, err := jsonRequest(r)
 	if err != nil {
-		response.Error = err.Error()
+		rw.Error = err.Error()
 		return
 	}
 
@@ -68,9 +68,9 @@ func (h RentHandler) GetAll(w http.ResponseWriter, r *http.Request) {
 
 	result, err := h.Service.GetAll(userID, params)
 	if err != nil {
-		response.Error = err.Error()
+		rw.Error = err.Error()
 		return
 	}
-	response.Success = true
-	response.Data = result
+	rw.Success = true
+	rw.Data = result
 }

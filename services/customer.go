@@ -1,15 +1,14 @@
 package services
 
 import (
+	"crypto/hmac"
+	"crypto/sha256"
 	"fmt"
 	"time"
 
-	"crypto/hmac"
-	"crypto/sha256"
-
 	"github.com/BeforyDeath/rent.movies.clear/domain"
 	"github.com/BeforyDeath/rent.movies.clear/interfaces"
-	"github.com/dgrijalva/jwt-go"
+	"github.com/dgrijalva/jwt-go" // fixme do adapter
 )
 
 type CustomerService struct {
@@ -74,16 +73,12 @@ func (s CustomerService) createToken(c *domain.Customer, salt string) (string, e
 }
 
 func (s CustomerService) CheckToken(token string, salt string) (jwt.MapClaims, error) {
-	t, err := jwt.Parse(token, func(token *jwt.Token) (interface{}, error) {
-		return []byte(salt), nil
-	})
+	t, err := jwt.Parse(token, func(token *jwt.Token) (interface{}, error) { return []byte(salt), nil })
 	if err != nil {
 		return nil, err
 	}
-
 	if claims, ok := t.Claims.(jwt.MapClaims); ok && t.Valid {
 		return claims, nil
 	}
-
 	return nil, fmt.Errorf("This token %v", "is terrible") // fixme
 }

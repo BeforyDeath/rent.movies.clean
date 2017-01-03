@@ -17,7 +17,7 @@ func NewMovieRepository(a adapter.SQLAdapter) *MovieRepository {
 
 func (repo MovieRepository) GetOne(ID int) (domain.Movie, error) {
 	movie := domain.Movie{}
-	row, err := repo.sql.QueryRow(sql["movieOne"], ID)
+	row, err := repo.sql.QueryRow(sql["movieOne"], ID) // fixme
 	if err != nil {
 		return movie, err
 	}
@@ -28,7 +28,7 @@ func (repo MovieRepository) GetOne(ID int) (domain.Movie, error) {
 func (repo MovieRepository) GetAll(p *domain.Pagination, f *domain.Movie) ([]domain.Movie, error) {
 	repo.queryConstruct(f)
 	rows, err := repo.query(p, f)
-	defer rows.Close()
+	defer rows.Close() // todo return err
 	if err != nil {
 		return nil, err
 	}
@@ -48,10 +48,7 @@ func (repo MovieRepository) GetAll(p *domain.Pagination, f *domain.Movie) ([]dom
 func (repo MovieRepository) GetTotal(f *domain.Movie) (int, error) {
 	repo.queryConstruct(f)
 	tc, err := repo.queryTotal(f)
-	if err != nil {
-		return 0, err
-	}
-	return tc, nil
+	return tc, err
 }
 
 func (repo MovieRepository) queryConstruct(f *domain.Movie) {
@@ -106,10 +103,7 @@ func (repo MovieRepository) query(p *domain.Pagination, f *domain.Movie) (adapte
 	case "limitYearGenre":
 		rows, err = repo.sql.Query(sql["movieBuilt"], p.Limit, p.Offset, f.Genre, f.Year)
 	}
-	if err != nil {
-		return nil, err
-	}
-	return rows, nil
+	return rows, err
 }
 
 func (repo MovieRepository) queryTotal(f *domain.Movie) (int, error) {
@@ -132,8 +126,5 @@ func (repo MovieRepository) queryTotal(f *domain.Movie) (int, error) {
 		return 0, err
 	}
 	err = row.Scan(&tc)
-	if err != nil {
-		return 0, err
-	}
-	return tc, nil
+	return tc, err
 }

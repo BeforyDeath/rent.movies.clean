@@ -13,38 +13,38 @@ type MovieHandler struct {
 }
 
 func (h MovieHandler) GetOne(w http.ResponseWriter, r *http.Request) {
-	response := newResponse(w)
-	defer response.Send()
+	rw := newResponse(w)
+	defer rw.Send()
 
 	params := interfaces.GetRouterParams(r)
 	ID, err := strconv.Atoi(params.ByName("ID"))
 	if err != nil {
-		response.Error = err.Error()
+		rw.Error = err.Error()
 		return
 	}
 	result, err := h.Service.GetOne(ID)
 	if err != nil {
-		response.Error = err.Error()
+		rw.Error = err.Error()
 		return
 	}
-	response.Success = true
-	response.Data = result
+	rw.Success = true
+	rw.Data = result
 }
 
 func (h MovieHandler) GetAll(w http.ResponseWriter, r *http.Request) {
-	response := newResponse(w)
-	defer response.Send()
+	rw := newResponse(w)
+	defer rw.Send()
 
 	params, err := jsonRequest(r)
 	if err != nil {
-		response.Error = err.Error()
+		rw.Error = err.Error()
 		return
 	}
 	result, err := h.Service.GetAll(params)
 	if err != nil {
-		response.Error = err.Error()
+		rw.Error = err.Error()
 		return
 	}
-	response.Success = true
-	response.Data = result
+	rw.Success = true
+	rw.Data = result
 }

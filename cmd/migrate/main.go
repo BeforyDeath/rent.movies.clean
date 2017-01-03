@@ -10,7 +10,7 @@ import (
 )
 
 func main() {
-	var dsn = "postgres://postgres:postgres@localhost:5432/postgres?sslmode=disable"
+	var dsn = "postgres://postgres:postgres@localhost:5432/postgres?sslmode=disable" // fixme
 
 	filename := flag.String("f", "", "Initialized databases from filename")
 	flag.Parse()

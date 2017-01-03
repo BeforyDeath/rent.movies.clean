@@ -1,12 +1,11 @@
-package interfaces
+package web
 
 import (
 	"context"
 	"net/http"
 
-	jwt "github.com/dgrijalva/jwt-go"
-	"github.com/julienschmidt/httprouter"
-	"github.com/justinas/alice"
+	"github.com/julienschmidt/httprouter" // fixme do adapter
+	"github.com/justinas/alice"           // fixme do adapter
 )
 
 type AliceService struct {
@@ -30,14 +29,4 @@ func (m AliceService) stripParams(h http.Handler) httprouter.Handle {
 		r = r.WithContext(ctx)
 		h.ServeHTTP(w, r)
 	}
-}
-
-func GetRouterParams(r *http.Request) httprouter.Params {
-	ctx := r.Context()
-	return ctx.Value("params").(httprouter.Params) // fixme
-}
-
-func GetClaims(r *http.Request) jwt.MapClaims {
-	ctx := r.Context()
-	return ctx.Value("claims").(jwt.MapClaims) // fixme
 }
