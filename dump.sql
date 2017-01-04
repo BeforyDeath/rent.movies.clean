@@ -1,11 +1,11 @@
 DROP SCHEMA IF EXISTS movies CASCADE;
 CREATE SCHEMA movies;
 
-CREATE AGGREGATE movies.array_accum (SFUNC = array_append, basetype = anyelement, stype = anyarray, initcond = '{}');
+CREATE AGGREGATE movies.array_accum ( SFUNC = array_append, BASETYPE = ANYELEMENT, STYPE = ANYARRAY, INITCOND = '{}');
 
-CREATE SEQUENCE movies.user_id_seq;
-CREATE TABLE movies.user (
-  id       INTEGER PRIMARY KEY NOT NULL DEFAULT nextval('movies.user_id_seq'),
+CREATE SEQUENCE movies.customer_id_seq;
+CREATE TABLE movies.customer (
+  id       INTEGER PRIMARY KEY NOT NULL DEFAULT nextval('movies.customer_id_seq'),
   login    VARCHAR(64)         NOT NULL,
   pass     VARCHAR(64)         NOT NULL,
   name     VARCHAR(64),
@@ -30,7 +30,7 @@ CREATE TABLE movies.movie (
 
 CREATE SEQUENCE movies.movie_genre_id_seq;
 CREATE TABLE movies.movie_genre (
-  id       INTEGER PRIMARY KEY NOT NULL DEFAULT nextval('movies.movie_genre_id_seq'),
+  id      INTEGER PRIMARY KEY NOT NULL DEFAULT nextval('movies.movie_genre_id_seq'),
   movieId INTEGER,
   genreId INTEGER,
   CONSTRAINT movie_genre_movie_id_fk FOREIGN KEY (movieId) REFERENCES movies.movie (id),
@@ -39,13 +39,13 @@ CREATE TABLE movies.movie_genre (
 
 CREATE SEQUENCE movies.rent_id_seq;
 CREATE TABLE movies.rent (
-  id       INTEGER PRIMARY KEY NOT NULL DEFAULT nextval('movies.rent_id_seq'),
-  userId  INTEGER,
-  movieId INTEGER,
-  active   BOOLEAN             NOT NULL,
-  createAt TIMESTAMP           NOT NULL,
-  closeAt  TIMESTAMP,
-  CONSTRAINT rent_user_id_fk FOREIGN KEY (userId) REFERENCES movies.user (id),
+  id         INTEGER PRIMARY KEY NOT NULL DEFAULT nextval('movies.rent_id_seq'),
+  customerId INTEGER,
+  movieId    INTEGER,
+  active     BOOLEAN             NOT NULL,
+  createAt   TIMESTAMP           NOT NULL,
+  closeAt    TIMESTAMP,
+  CONSTRAINT rent_customer_id_fk FOREIGN KEY (customerId) REFERENCES movies.customer (id),
   CONSTRAINT rent_movie_id_fk FOREIGN KEY (movieId) REFERENCES movies.movie (id)
 );
 

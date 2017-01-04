@@ -1,9 +1,9 @@
 package services
 
 import (
-	"github.com/BeforyDeath/rent.movies.clear/interfaces/handler"
-	"github.com/BeforyDeath/rent.movies.clear/interfaces/repository"
-	"github.com/BeforyDeath/rent.movies.clear/interfaces/web"
+	"github.com/BeforyDeath/rent.movies.clean/interfaces/handler"
+	"github.com/BeforyDeath/rent.movies.clean/interfaces/repository"
+	"github.com/BeforyDeath/rent.movies.clean/interfaces/web"
 )
 
 type WebRepository struct {

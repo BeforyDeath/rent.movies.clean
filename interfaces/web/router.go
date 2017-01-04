@@ -1,7 +1,7 @@
 package web
 
 import (
-	"github.com/BeforyDeath/rent.movies.clear/interfaces/handler"
+	"github.com/BeforyDeath/rent.movies.clean/interfaces/handler"
 	"github.com/julienschmidt/httprouter" // fixme do adapter
 )
 

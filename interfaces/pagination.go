@@ -1,6 +1,6 @@
 package interfaces
 
-import "github.com/BeforyDeath/rent.movies.clear/domain"
+import "github.com/BeforyDeath/rent.movies.clean/domain"
 
 func NewPagination(p map[string]interface{}) (*domain.Pagination, error) {
 	pages := new(domain.Pagination)

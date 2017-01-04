@@ -6,8 +6,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/BeforyDeath/rent.movies.clear/domain"
-	"github.com/BeforyDeath/rent.movies.clear/interfaces"
+	"github.com/BeforyDeath/rent.movies.clean/domain"
+	"github.com/BeforyDeath/rent.movies.clean/interfaces"
 	"github.com/dgrijalva/jwt-go" // fixme do adapter
 )
 

@@ -1,8 +1,8 @@
 package services
 
 import (
-	"github.com/BeforyDeath/rent.movies.clear/domain"
-	"github.com/BeforyDeath/rent.movies.clear/interfaces"
+	"github.com/BeforyDeath/rent.movies.clean/domain"
+	"github.com/BeforyDeath/rent.movies.clean/interfaces"
 )
 
 type MovieService struct {

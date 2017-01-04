@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/BeforyDeath/rent.movies.clear/infrastructure"
-	"github.com/BeforyDeath/rent.movies.clear/interfaces/repository"
-	"github.com/BeforyDeath/rent.movies.clear/services"
+	"github.com/BeforyDeath/rent.movies.clean/infrastructure"
+	"github.com/BeforyDeath/rent.movies.clean/interfaces/repository"
+	"github.com/BeforyDeath/rent.movies.clean/services"
 )
 
 func main() {

@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/BeforyDeath/rent.movies.clear/infrastructure"
+	"github.com/BeforyDeath/rent.movies.clean/infrastructure"
 )
 
 func main() {

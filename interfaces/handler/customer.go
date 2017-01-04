@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"github.com/BeforyDeath/rent.movies.clear/interfaces/service"
+	"github.com/BeforyDeath/rent.movies.clean/interfaces/service"
 )
 
 type CustomerHandler struct {

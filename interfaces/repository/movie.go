@@ -3,8 +3,8 @@ package repository
 import (
 	"strings"
 
-	"github.com/BeforyDeath/rent.movies.clear/domain"
-	"github.com/BeforyDeath/rent.movies.clear/interfaces/adapter"
+	"github.com/BeforyDeath/rent.movies.clean/domain"
+	"github.com/BeforyDeath/rent.movies.clean/interfaces/adapter"
 )
 
 type MovieRepository struct {

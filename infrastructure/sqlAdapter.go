@@ -4,7 +4,7 @@ import (
 	"database/sql"
 	"fmt"
 
-	"github.com/BeforyDeath/rent.movies.clear/interfaces/adapter"
+	"github.com/BeforyDeath/rent.movies.clean/interfaces/adapter"
 )
 
 type SQLRow struct {
