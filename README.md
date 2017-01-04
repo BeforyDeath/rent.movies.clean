@@ -7,7 +7,7 @@
 Сервис по аренде фильмов, выполненный в рамках тестового задания:
 >Спроектировать API, документировать и реализовать HTTP/REST сервис используя язык Golang и PostgreSQL.
 
-#####Вариант в исполнении паттерна "Clean Architecture to Go applications"
+Вариант в исполнении паттерна "Clean Architecture to Go applications"
 
 PS.. Предыдущий вариант и описание: https://github.com/BeforyDeath/rent.movies
 
