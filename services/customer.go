@@ -43,7 +43,7 @@ func (s CustomerService) Login(p map[string]interface{}) (string, error) {
 		return "", err
 	}
 
-	token, err := s.createToken(customer, "salt") // fixme
+	token, err := s.createToken(customer, "salt", 10) // fixme
 	if err != nil {
 		return "", err
 	}
@@ -60,13 +60,13 @@ func (s CustomerService) hashed(str, salt string) (string, error) {
 	return fmt.Sprintf("%x", mac.Sum(nil)), nil
 }
 
-func (s CustomerService) createToken(c *domain.Customer, salt string) (string, error) {
+func (s CustomerService) createToken(c *domain.Customer, salt string, during time.Duration) (string, error) {
 	token := jwt.New(jwt.SigningMethodHS256)
 	claims := make(jwt.MapClaims)
 	claims["userID"] = c.ID
 	claims["login"] = c.Login
 	claims["Name"] = c.Name
-	claims["exp"] = time.Now().Add(time.Minute * 60).Unix() // fixme
+	claims["exp"] = time.Now().Add(time.Minute * during).Unix()
 	token.Claims = claims
 	tokenString, err := token.SignedString([]byte(salt))
 	return tokenString, err
