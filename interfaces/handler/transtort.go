@@ -25,7 +25,9 @@ func (r *response) Send() {
 func jsonRequest(r *http.Request) (map[string]interface{}, error) {
 	defer r.Body.Close()
 	var JSON map[string]interface{}
-	err := json.NewDecoder(r.Body).Decode(&JSON)
+	decoder := json.NewDecoder(r.Body)
+	decoder.UseNumber()
+	err := decoder.Decode(&JSON)
 	if err != nil {
 		if err != io.EOF {
 			return JSON, err
