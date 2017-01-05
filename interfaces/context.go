@@ -3,7 +3,7 @@ package interfaces
 import (
 	"net/http"
 
-	jwt "github.com/dgrijalva/jwt-go" // fixme do adapter
+	jwt "github.com/dgrijalva/jwt-go"     // fixme do adapter
 	"github.com/julienschmidt/httprouter" // fixme do adapter
 )
 
