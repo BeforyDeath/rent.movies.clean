@@ -1,7 +1,7 @@
 #rent.movies.clean
 
 [![Go Report Card](https://goreportcard.com/badge/github.com/BeforyDeath/rent.movies.clean)](https://goreportcard.com/report/github.com/BeforyDeath/rent.movies.clean)
-[![codebeat badge](https://codebeat.co/badges/c9ea6185-32c5-495c-aa70-209c880f9011)](https://codebeat.co/projects/github-com-beforydeath-rent-movies-clear)
+[![codebeat badge](https://codebeat.co/badges/7b7c6cf3-2bbc-4649-82a2-b79b6c0ab4ed)](https://codebeat.co/projects/github-com-beforydeath-rent-movies-clean)
 
 ##Описание проекта
 PS.. Предыдущий вариант и описание: https://github.com/BeforyDeath/rent.movies
